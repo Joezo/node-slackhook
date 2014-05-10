@@ -1,6 +1,8 @@
 # Slackhook
 The only module you'll need for custom hooks that integrate with [Slack](https://slack.com).
 
+[![Build Status](https://travis-ci.org/Joezo/node-slackhook.svg)](https://travis-ci.org/Joezo/node-slackhook)
+
 ## Installation
 `npm install slackhook`
 
