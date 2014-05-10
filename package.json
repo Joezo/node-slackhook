@@ -1,0 +1,30 @@
+{
+  "name": "slackhook",
+  "version": "0.0.1",
+  "description": "The only module you'll need for custom hooks that integrate with Slack",
+  "main": "slack.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "slack",
+    "webhook",
+    "slackhook",
+    "slackhq",
+    "incoming",
+    "outgoing"
+  ],
+  "repository": "git@github.com:Joezo/node-slackhook.git",
+  "author": "Joe Warren <joe.warren@holidayextras.com>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "2.34.0"
+  },
+  "devDependencies": {
+    "sinon": "^1.9.1",
+    "mocha": "^1.18.2"
+  }
+}
