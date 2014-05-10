@@ -61,3 +61,6 @@ app.post('/outgoing', function(req, res){
 	res.json({text: 'Hi ' + hook.user_name, username: 'Dr. Nick'});
 });
 ```
+
+## License
+MIT

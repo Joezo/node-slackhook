@@ -24,7 +24,9 @@
     "request": "2.34.0"
   },
   "devDependencies": {
-    "sinon": "^1.9.1",
-    "mocha": "^1.18.2"
+    "sinon": "1.9.1",
+    "mocha": "1.18.2",
+    "grunt": "0.4.4",
+    "grunt-release": "0.7.0"
   }
 }
