@@ -62,5 +62,9 @@ app.post('/outgoing', function(req, res){
 });
 ```
 
+## Example apps
+
+[Teamcity integration](https://github.com/Joezo/slackhook-example)
+
 ## License
 MIT
