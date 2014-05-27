@@ -18,11 +18,19 @@ describe('test send', function(){
       channel: 'test',
       text: 'hello',
       username: 'test',
-      icon_emoji: 'smile'
+      icon_emoji: 'smile',
+      attachments : [{ 
+        fallback: 'hello',
+        color: 'good',
+        fields: [
+          {title: 'col 1', value: 'hello 1', short: true},
+          {title: 'col 2', value: 'hello 2', short: true}
+        ]
+      }]
     };
     var expected = {
       url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
-      body: '{"channel":"#test","text":"hello","username":"test","icon_emoji":"smile"}'
+      body: '{"channel":"#test","text":"hello","username":"test","icon_emoji":"smile","attachments":[{"fallback":"hello","color":"good","fields":[{"title":"col 1","value":"hello 1","short":true},{"title":"col 2","value":"hello 2","short":true}]}]}'
     };
     request.post.callsArgWith(1, null, null, 'ok');
     slack.send(input, function(err, res){
