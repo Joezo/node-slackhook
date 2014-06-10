@@ -1,6 +1,6 @@
 {
   "name": "slackhook",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The only module you'll need for custom hooks that integrate with Slack",
   "main": "slack.js",
   "directories": {
