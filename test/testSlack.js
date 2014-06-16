@@ -15,7 +15,7 @@ describe('test send', function(){
 
   it('should callback with ok', function(done){
     var input = {
-      channel: 'test',
+      channel: '#test',
       text: 'hello',
       username: 'test',
       icon_emoji: 'smile',
