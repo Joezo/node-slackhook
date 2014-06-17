@@ -19,7 +19,6 @@ Slack.prototype.send = function(message,cb) {
 
   var url = 'https://' + this.domain + '.slack.com/services/hooks/incoming-webhook?token=' + this.token;
   var channel = message.channel || this.defaultChannel;
-  if(channel.substring(0,1) !== '#') channel = '#' + channel;
   var options = {
     channel: channel,
     text: message.text,
