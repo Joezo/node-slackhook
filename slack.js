@@ -12,7 +12,7 @@ function Slack(options) {
 }
 
 Slack.prototype.send = function(message,cb) {
-  if( !( message && message instanceof Object && message.text ) ) {
+  if( !( message && message instanceof Object && ( message.text || message.attachments ) ) ) {
     if( cb && cb instanceof Function ) return cb(new Error('No message'));
     return 'No message';
   }
@@ -21,10 +21,10 @@ Slack.prototype.send = function(message,cb) {
   var channel = message.channel || this.defaultChannel;
   var options = {
     channel: channel,
-    text: message.text,
-    username: message.username,
+    username: message.username
   };
 
+  if( message.text ) options.text = message.text;
   if( message.icon_emoji ) options.icon_emoji = message.icon_emoji;
   if( message.icon_url ) options.icon_url = message.icon_url;
   if( message.attachments ) options.attachments = message.attachments;
