@@ -30,7 +30,7 @@ describe('test send', function(){
     };
     var expected = {
       url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
-      body: '{"channel":"#test","text":"hello","username":"test","icon_emoji":"smile","attachments":[{"fallback":"hello","color":"good","fields":[{"title":"col 1","value":"hello 1","short":true},{"title":"col 2","value":"hello 2","short":true}]}]}'
+      body: '{"channel":"#test","username":"test","text":"hello","icon_emoji":"smile","attachments":[{"fallback":"hello","color":"good","fields":[{"title":"col 1","value":"hello 1","short":true},{"title":"col 2","value":"hello 2","short":true}]}]}'
     };
     request.post.callsArgWith(1, null, null, 'ok');
     slack.send(input, function(err, res){
@@ -49,7 +49,7 @@ describe('test send', function(){
     };
     var expected = {
       url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
-      body: '{"channel":"#general","text":"hello","username":"test","icon_url":"drnick.png"}'
+      body: '{"channel":"#general","username":"test","text":"hello","icon_url":"drnick.png"}'
     };
     request.post.callsArgWith(1, null, null, 'ok');
     slack.send(input, function(err, res){
@@ -70,6 +70,33 @@ describe('test send', function(){
     });
   });
 
+  it('should allow messages with attachments without text', function(done){
+    var input = {
+      channel: '#test',
+      username: 'test',
+      icon_emoji: 'smile',
+      attachments : [{ 
+        fallback: 'hello',
+        color: 'good',
+        fields: [
+          {title: 'col 1', value: 'hello 1', short: true},
+          {title: 'col 2', value: 'hello 2', short: true}
+        ]
+      }]
+    };
+    var expected = {
+      url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
+      body: '{"channel":"#test","username":"test","icon_emoji":"smile","attachments":[{"fallback":"hello","color":"good","fields":[{"title":"col 1","value":"hello 1","short":true},{"title":"col 2","value":"hello 2","short":true}]}]}'
+    };
+    request.post.callsArgWith(1, null, null, 'ok');
+    slack.send(input, function(err, res){
+      assert.ok(!err);
+      assert.equal(res, 'ok');
+      assert.deepEqual(request.post.getCall(0).args[0], expected);
+      done();
+    });
+  });
+    
   afterEach(function(){
     request.post.restore();
   });
