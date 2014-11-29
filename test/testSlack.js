@@ -1,7 +1,6 @@
 var Slack = require('../slack.js');
 var slack = new Slack({
-  domain: 'testing',
-  token: 'testToken'
+  webhook: 'https://hooks.slack.com/services/testhook'
 });
 var assert = require('assert');
 var sinon = require('sinon');
@@ -29,7 +28,7 @@ describe('test send', function(){
       }]
     };
     var expected = {
-      url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
+      url: 'https://hooks.slack.com/services/testhook',
       body: '{"channel":"#test","text":"hello","username":"test","icon_emoji":"smile","attachments":[{"fallback":"hello","color":"good","fields":[{"title":"col 1","value":"hello 1","short":true},{"title":"col 2","value":"hello 2","short":true}]}]}'
     };
     request.post.callsArgWith(1, null, null, 'ok');
@@ -48,7 +47,7 @@ describe('test send', function(){
       icon_url: 'drnick.png'
     };
     var expected = {
-      url: 'https://testing.slack.com/services/hooks/incoming-webhook?token=testToken',
+      url: 'https://hooks.slack.com/services/testhook',
       body: '{"channel":"#general","text":"hello","username":"test","icon_url":"drnick.png"}'
     };
     request.post.callsArgWith(1, null, null, 'ok');
