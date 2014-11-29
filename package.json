@@ -1,6 +1,6 @@
 {
   "name": "slackhook",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The only module you'll need for custom hooks that integrate with Slack",
   "main": "slack.js",
   "directories": {
@@ -19,6 +19,7 @@
   ],
   "repository": "git@github.com:Joezo/node-slackhook.git",
   "author": "Joe Warren <joe.warren@holidayextras.com>",
+  "contributor" : "Karl Vaillant <karl.vaillant@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "request": "2.34.0"
