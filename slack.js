@@ -1,13 +1,12 @@
 var request = require('request');
 
 function Slack(options) {
-  this.domain = null;
-  this.token = null;
+  this.webhook = null;
   this.defaultChannel = '#general';
   if( options && options instanceof Object ){
-    this.domain = options.domain;
-    this.token = options.token;
+    if( !options.webhook ) throw new Error('Need a webhook');
     if( options.defaultChannel ) this.defaultChannel = options.defaultChannel;
+    this.webhook = options.webhook;
   }
 }
 
@@ -17,7 +16,6 @@ Slack.prototype.send = function(message,cb) {
     return 'No message';
   }
 
-  var url = 'https://' + this.domain + '.slack.com/services/hooks/incoming-webhook?token=' + this.token;
   var channel = message.channel || this.defaultChannel;
   var options = {
     channel: channel,
@@ -30,7 +28,7 @@ Slack.prototype.send = function(message,cb) {
   if( message.attachments ) options.attachments = message.attachments;
 
   var requestParams = {
-    url: url,
+    url: this.webhook,
     body: JSON.stringify(options)
   };
 

@@ -19,8 +19,7 @@ The token is given to you when you create your incoming webhook integration.
 ```javascript
 var Slackhook = require('slackhook');
 var slack = new Slackhook({
-    domain: 'yourdomain',
-    token: 'yourtoken'
+    webhook: 'slackwebhook'
 });
 ```
 
